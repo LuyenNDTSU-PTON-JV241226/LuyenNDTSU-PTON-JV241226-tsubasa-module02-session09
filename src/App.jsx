@@ -7,8 +7,13 @@ import AdminIndex from './ss9-2/AdminIndex'
 import Account from './ss9-2/Account'
 import Product from './ss9-2/Product'
 import Order from './ss9-2/Order'
+import Login from './ss9-4/Login'
+import Account4 from './ss9-4/Account4'
+import PrivateRouter4 from './ss9-4/PrivateRouter4'
+import { useState } from 'react'
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   return (
     <>
       <BrowserRouter>
@@ -21,6 +26,15 @@ function App() {
           <Route path='product' element={<Product/>} />
           <Route path='order' element={<Order/>} />
         </Route>
+        <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+        <Route
+          path="/account"
+          element={
+            <PrivateRouter4 isAuthenticated={isAuthenticated}>
+              <Account4/>
+            </PrivateRouter4>
+          }
+        />
       </Routes>
       </BrowserRouter>
     </>
