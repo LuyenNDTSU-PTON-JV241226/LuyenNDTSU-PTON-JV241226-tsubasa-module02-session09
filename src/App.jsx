@@ -11,9 +11,13 @@ import Login from './ss9-4/Login'
 import Account4 from './ss9-4/Account4'
 import PrivateRouter4 from './ss9-4/PrivateRouter4'
 import { useState } from 'react'
+import ListProduct from './ss9-3/components/ListProduct'
+import ProductDetail from './ss9-3/components/ProductDetail'
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  
   return (
     <>
       <BrowserRouter>
@@ -35,6 +39,11 @@ function App() {
             </PrivateRouter4>
           }
         />
+      </Routes>
+      {/* ss9-3 */}
+      <Routes>
+        <Route path="/" element={<ListProduct />} />
+        <Route path="/detail/:id" element={<ProductDetail />} />
       </Routes>
       </BrowserRouter>
     </>
